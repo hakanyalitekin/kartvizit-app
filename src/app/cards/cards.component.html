@@ -6,8 +6,8 @@
         Bu ekrandan kartvizitlerinizi yönetebilirsiniz.
       </p>
     </div>
-
-    <button mat-flat-button color="primary" (click)="openAddCardModal()">Yeni Kartvizit</button>
+    <app-card-search></app-card-search>
+    <button mat-flat-button color="primary" class="ms-3" (click)="openAddCardModal()">Yeni Kartvizit</button>
   </div>
 
   <hr>
@@ -19,7 +19,7 @@
     <div class="col-12" *ngIf="cardService.cards?.length === 0">
       <span>Henüz kartvizit eklemediniz. <a class="text-primary" style="cursor: pointer;" (click)="openAddCardModal()">Buraya</a> tıklayarak kartvizit ekleyebilirsiniz.</span>
     </div>
-    <div class="col-12 col-md-4 col-lg-3" *ngFor="let card of cardService.cards">
+    <div class="col-12 col-md-4 col-lg-3" *ngFor="let card of cardService.filteredCards">
       <app-card-item [card]="card"></app-card-item>
       <!-- <app-card-item [card]="cartItem"></app-card-item> -->
 
