@@ -7,12 +7,18 @@
       </p>
     </div>
 
-    <button mat-flat-button color="primary" (click)="openAddCardModal()" >Yeni Kartvizit</button>
+    <button mat-flat-button color="primary" (click)="openAddCardModal()">Yeni Kartvizit</button>
   </div>
 
   <hr>
 
   <div class="row">
+    <div class="col-12" *ngIf="!cardService.cards">
+      <span>Kartvizitler yükleniyor. Lütfen Bekleyiniz.</span>
+    </div>
+    <div class="col-12" *ngIf="cardService.cards?.length === 0">
+      <span>Henüz kartvizit eklemediniz. <a class="text-primary" style="cursor: pointer;" (click)="openAddCardModal()">Buraya</a> tıklayarak kartvizit ekleyebilirsiniz.</span>
+    </div>
     <div class="col-12 col-md-4 col-lg-3" *ngFor="let card of cardService.cards">
       <app-card-item [card]="card"></app-card-item>
       <!-- <app-card-item [card]="cartItem"></app-card-item> -->

@@ -2,18 +2,25 @@
 <mat-dialog-content class="mat-typography">
 
   <form class="example-form" [formGroup]="cardForm">
+
+    <div *ngIf="showSpinner">
+      <mat-progress-bar mode="query"></mat-progress-bar>
+      <br>
+    </div>
+
+
     <mat-form-field class="example-full-width">
       <mat-label>Title</mat-label>
       <input matInput formControlName="title">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <mat-label>Name</mat-label>
+      <mat-label>İsim</mat-label>
       <input matInput formControlName="name">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <mat-label>Phone</mat-label>
+      <mat-label>Telefon</mat-label>
       <input matInput formControlName="phone">
     </mat-form-field>
 
@@ -23,7 +30,7 @@
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <mat-label>Address</mat-label>
+      <mat-label>Adres</mat-label>
       <textarea matInput formControlName="address"></textarea>
     </mat-form-field>
   </form>
@@ -32,14 +39,12 @@
 <mat-dialog-actions align="end">
 
   <div class="flex-grow-1 text-start" *ngIf="data">
-    <button mat-raised-button mat-dialog-close color="warn" (click)="deleteCard()">Sil</button>
+    <button mat-raised-button mat-dialog-close color="warn" (click)="deleteCard()" [disabled]="showSpinner">Sil</button>
   </div>
 
   <div>
     <button mat-raised-button mat-dialog-close>Vazgeç</button>
-    <button mat-raised-button color="primary" (click)="data ? updateCard() : addCard()">
-      {{data ? 'Düzenle': 'Ekle'}}
-    </button>
+    <button mat-raised-button color="primary" (click)="data ? updateCard() : addCard()" [disabled]="cardForm.invalid || showSpinner ">{{data ? 'Düzenle': 'Ekle'}}</button>
   </div>
 
 </mat-dialog-actions>
