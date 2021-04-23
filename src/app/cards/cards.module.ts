@@ -12,6 +12,7 @@ import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { CardSearchComponent } from './card-search/card-search.component';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { CardSearchComponent } from './card-search/card-search.component';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatIconModule
   ]
 })
 export class CardsModule { }
