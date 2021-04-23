@@ -1,5 +1,5 @@
 <mat-card class="card-item">
-    <mat-card-header>
+    <mat-card-header (click)="openUpdateCardModal(card)">
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{card.name}}</mat-card-title>
         <mat-card-subtitle>{{card.title}}</mat-card-subtitle>

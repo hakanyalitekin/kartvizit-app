@@ -13,7 +13,7 @@
   <hr>
 
   <div class="row">
-    <div class="col-12 col-md-4 col-lg-3" *ngFor="let card of cards">
+    <div class="col-12 col-md-4 col-lg-3" *ngFor="let card of cardService.cards">
       <app-card-item [card]="card"></app-card-item>
       <!-- <app-card-item [card]="cartItem"></app-card-item> -->
 

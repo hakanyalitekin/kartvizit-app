@@ -18,15 +18,16 @@ export class CardsComponent implements OnInit {
   //   phone:'asdas',
   //   address:'adsas'
   // }
-  cards!: Card[];
+  // cards!: Card[];
   constructor(
     public dialog: MatDialog,
-    private cardService: CardService,
+    public cardService: CardService, //HTML tarafından erişeceğimiz için public
   ) { }
 
 
   ngOnInit(): void {
-    this.getCards();
+    // this.getCards();
+    this.cardService.getCards();
   }
 
   openAddCardModal(): void {
@@ -34,16 +35,18 @@ export class CardsComponent implements OnInit {
       width: '400px'
     });
 
-    dialog.afterClosed().subscribe(res => {
-      if (res) {
-        this.getCards();
-      }
-    });
+    // tslint:disable-next-line: deprecation
+    // dialog.afterClosed().subscribe(res => {
+    //   if (res) {
+    //     // this.getCards();
+    //   }
+    // });
   }
-  getCards(): void {
-    this.cardService.getCards()
-      .subscribe((res: Card[]) => {
-        this.cards = res;
-      });
-  }
+  // getCards(): void {
+  //   this.cardService.getCards()
+  //     // tslint:disable-next-line: deprecation
+  //     .subscribe((res: Card[]) => {
+  //       this.cards = res;
+  //     });
+  // }
 }
