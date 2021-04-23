@@ -29,7 +29,7 @@ export class CardModalComponent implements OnInit {
     this.cardForm = this.fb.group({
       name: [this.data?.name || '', Validators.maxLength(50)],
       title: [this.data?.title || '', Validators.required],
-      phone: [this.data?.phone || '', Validators.required, Validators.maxLength(20)],
+      phone: [this.data?.phone || '', [Validators.required, Validators.maxLength(20)]],
       email: [this.data?.email || '', Validators.email],
       address: this.data?.address || ''
     });
