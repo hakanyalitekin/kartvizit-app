@@ -43,10 +43,20 @@ export class CardModalComponent implements OnInit {
   }
 
   updateCard(): void {
-
     this.cardService.updateCard(this.cardForm.value, this.data.id)
       .subscribe((res: any) => {
-        this._snackBar.open(res ? 'Güncelleme başarılı' : 'Güncelleme başarısız.', '', {
+        this._snackBar.open(res ? 'Güncelleme başarılı' : 'Güncelleme başarısız.', 'Kapat', {
+          duration: 4000
+        });
+        this.cardService.getCards();
+        this.dialogRef.close();
+      });
+  }
+
+  deleteCard(): void {
+    this.cardService.deleteCard(this.data.id)
+      .subscribe((res: any) => {
+        this._snackBar.open(res ? 'Silme işlemi başarılı' : 'Silme işlemi başarısız', 'Kapat', {
           duration: 4000
         });
         this.cardService.getCards();

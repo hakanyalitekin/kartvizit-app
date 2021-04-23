@@ -9,17 +9,17 @@
 
     <mat-form-field class="example-full-width">
       <mat-label>Name</mat-label>
-      <input matInput  formControlName="name"> 
+      <input matInput formControlName="name">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label>Phone</mat-label>
-      <input matInput  formControlName="phone">
+      <input matInput formControlName="phone">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label>Email</mat-label>
-      <input matInput  formControlName="email">
+      <input matInput formControlName="email">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
@@ -30,6 +30,16 @@
 
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close class="btn btn-danger">Vazgeç</button>
-  <button mat-button class="btn btn-{{data ? 'warning': 'success'}}" (click)="data ? updateCard() : addCard()">{{data ? 'Düzenle': 'Ekle'}}</button>
+
+  <div class="flex-grow-1 text-start" *ngIf="data">
+    <button mat-raised-button mat-dialog-close color="warn" (click)="deleteCard()">Sil</button>
+  </div>
+
+  <div>
+    <button mat-raised-button mat-dialog-close>Vazgeç</button>
+    <button mat-raised-button color="primary" (click)="data ? updateCard() : addCard()">
+      {{data ? 'Düzenle': 'Ekle'}}
+    </button>
+  </div>
+
 </mat-dialog-actions>
