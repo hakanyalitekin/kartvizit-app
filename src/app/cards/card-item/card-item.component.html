@@ -8,8 +8,19 @@
     <mat-card-content>
         <ul class="list-group list-group-flush">
             <li class="list-group-item" *ngIf="card.phone">{{card.phone}}</li>
-            <li class="list-group-item" *ngIf="card.email">{{card.email}}</li>
-            <li class="list-group-item" *ngIf="card.address">{{card.address}}</li>
+
+            <!-- İf-Else 1.kullanım örneği -->
+            <li class="list-group-item" *ngIf="card.email; else noEmail">{{card.email}}</li>
+            <ng-template #noEmail>
+                <span class="text-warning no-content">E-Posta girilmemiştir.</span>
+            </ng-template>
+
+            <!-- if-else 2.kullanım örneği -->
+            <li class="list-group-item">
+                <span *ngIf="card.address;"> {{card.address}} </span>
+                <small *ngIf="!card.address;" class="text-warning">Adres girilmemiştir.</small>
+            </li>
+
         </ul>
     </mat-card-content>
 </mat-card>

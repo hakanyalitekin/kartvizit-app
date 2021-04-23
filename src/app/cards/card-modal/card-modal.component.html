@@ -1,8 +1,35 @@
 <h2 mat-dialog-title>Yeni Kartvizit</h2>
 <mat-dialog-content class="mat-typography">
- 
+
+  <form class="example-form" [formGroup]="cardForm">
+    <mat-form-field class="example-full-width">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input matInput  formControlName="name"> 
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Phone</mat-label>
+      <input matInput  formControlName="phone">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput  formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Address</mat-label>
+      <textarea matInput formControlName="address"></textarea>
+    </mat-form-field>
+  </form>
+
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Vazgeç</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Ekle</button>
+  <button mat-button mat-dialog-close class="btn btn-warning">Vazgeç</button>
+  <button mat-button class="btn btn-success" (click)="addCard()">Ekle</button>
 </mat-dialog-actions>

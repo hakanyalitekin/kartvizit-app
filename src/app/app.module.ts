@@ -27,8 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     {
       provide: 'apiUrl',
-      // useValue: 'http://demo.limantech.com/cards/public/api'
-      useValue: 'https://6081ba9973292b0017cde197.mockapi.io/api/'
+      // useValue: 'https://demo.limantech.com/cards/public/api'
+       useValue: 'https://6081ba9973292b0017cde197.mockapi.io/api/'
     }
   ],
   bootstrap: [AppComponent]

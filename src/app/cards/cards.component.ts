@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { config } from 'rxjs';
 import { CardService } from '../services/card.service';
 import { CardModalComponent } from './card-modal/card-modal.component';
 import { Card } from '../models/card';
@@ -12,17 +11,17 @@ import { Card } from '../models/card';
 })
 export class CardsComponent implements OnInit {
 
-// cartItem={
-//   title:'ada',
-//   name:'dadad',
-//   email:'asda',
-//   phone:'asdas',
-//   address:'adsas'
-// }
+  // cartItem={
+  //   title:'ada',
+  //   name:'dadad',
+  //   email:'asda',
+  //   phone:'asdas',
+  //   address:'adsas'
+  // }
   cards!: Card[];
   constructor(
     public dialog: MatDialog,
-    private cardService: CardService
+    private cardService: CardService,
   ) { }
 
 
@@ -31,8 +30,14 @@ export class CardsComponent implements OnInit {
   }
 
   openAddCardModal(): void {
-    this.dialog.open(CardModalComponent, {
+    const dialog = this.dialog.open(CardModalComponent, {
       width: '400px'
+    });
+
+    dialog.afterClosed().subscribe(res => {
+      if (res) {
+        this.getCards();
+      }
     });
   }
   getCards(): void {
